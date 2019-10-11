@@ -15,7 +15,19 @@
   <main id="app">
 
     <h3>{{title}}</h3>
-<h3>test</h3>
+    <form @submit.prevent="addTodo">
+      <label for="newTodo">New Todo</label>
+      <input v-model="newTodo" type="text" name="newTodo" id="newTodo" value="">
+      <button type="submit" name="button">Add</button>
+    </form>
+    <button @click="allDone" type="button" name="button">Mark all as done</button>
+    <ul>
+      <li v-for="todo in todos">
+        <input type="checkbox" v-model="todo.done">
+        <span :class="{done: todo.done}">{{todo.title}}</span>
+        <button @click="removeTodo(todo)" type="button">X</button>
+      </li>
+    </ul>
 
   </main>
 
